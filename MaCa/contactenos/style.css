@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #101316;
+    color: #ccc;
+    font-family: sans-serif;
+}
+
+
+.form {
+    min-height: 60dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    container-type: inline-size;
+    container-name: form;
+}
+
+.form__title {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+}
+
+.form__form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 16px;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.form__input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__input-container input,
+.form__input-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #9a9a9a;
+    background-color: transparent;
+    color: #ccc;
+}
+
+.form__input-container textarea {
+    resize: none;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+.form__input-container input[type="submit"] {
+    padding: 12px;
+    border: 2px solid #f04e4e;
+    color: #f04e4e;
+    background-color: transparent;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form__input-container input[type="submit"]:hover {
+    background-color: #f04e4e;
+    color: #101316;
+}
+
+.form__input-container input:focus,
+.form__input-container textarea:focus {
+    outline: none;
+    border-bottom: 1px solid #fff;
+}
+
+.back {
+    position: sticky;
+    top: 0;
+    box-shadow: 0 0 4px #eee;
+    padding: 30px;
+    background-color: #101316;
+    border: 1px solid #78787888;
+    margin: 6px;
+    border-radius: 50%;
+    transition: all 0.3s ease
+}
+.back:hover{
+    background-color: #eee;
+    color: #222;
+}
+#arrow_back {
+    color: #9a9a9a;
+}
+#arrow_back:hover{
+    color: #222;
+}
+
+
+/* Aplicando estilos con container queries */
+@container form (min-width: 600px) {
+    .form__form {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "name email"
+            "phone company"
+            "subject subject"
+            "message message"
+            "button button";
+    }
+
+    .form__input-container:nth-child(1) { grid-area: name; }
+    .form__input-container:nth-child(2) { grid-area: email; }
+    .form__input-container:nth-child(3) { grid-area: phone; }
+    .form__input-container:nth-child(4) { grid-area: company; }
+    .form__input-container:nth-child(5) { grid-area: subject; }
+    .form__input-container:nth-child(6) { grid-area: message; }
+    .form__input-container:nth-child(7) { grid-area: button; }
+}
